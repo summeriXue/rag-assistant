@@ -1,0 +1,23 @@
+# Environment variables
+.env
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+
+# Vector database
+chroma_db/
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Frontend build
+frontend/dist/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
