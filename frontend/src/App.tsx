@@ -151,27 +151,50 @@ function App() {
                   </span>
                 </div>
 
-                <span className="pipeline-arrow">→</span>
+                {result.trace.documents_relevant && (
+                  <>
+                    <span className="pipeline-arrow">→</span>
 
-                <div className="pipeline-step">
-                  <span className="step-name">Generate</span>
-                  <span className="step-status">DONE</span>
-                </div>
+                    <div className="pipeline-step">
+                      <span className="step-name">Generate</span>
+                      <span className="step-status">DONE</span>
+                    </div>
 
-                <span className="pipeline-arrow">→</span>
+                    <span className="pipeline-arrow">→</span>
 
-                <div className="pipeline-step">
-                  <span className="step-name">Verify</span>
-                  <span
-                    className={
-                      result.trace.answer_supported
-                        ? 'step-status pass'
-                        : 'step-status fail'
-                    }
-                  >
-                    {result.trace.answer_supported ? 'PASS' : 'FAIL'}
-                  </span>
-                </div>
+                    <div className="pipeline-step">
+                      <span className="step-name">Verify</span>
+                      <span
+                        className={
+                          result.trace.answer_supported
+                            ? 'step-status pass'
+                            : 'step-status fail'
+                        }
+                      >
+                        {result.trace.answer_supported ? 'PASS' : 'FAIL'}
+                      </span>
+                    </div>
+                  </>
+                )}
+                {!result.trace.documents_relevant && (
+                  <>
+                    <span className="pipeline-arrow">→</span>
+
+                    <div className="pipeline-step">
+                      <span className="step-name">Rewrite</span>
+                      <span className="step-value">
+                        × {result.trace.retrieval_retry_count}
+                      </span>
+                    </div>
+
+                    <span className="pipeline-arrow">→</span>
+
+                    <div className="pipeline-step">
+                      <span className="step-name">No Answer</span>
+                      <span className="step-status fail">STOP</span>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="retry-row">

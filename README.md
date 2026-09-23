@@ -17,6 +17,20 @@ Agentic RAG Assistant 是一个基于 LangGraph 搭建的 Agentic RAG 应用。
 
 通过将 RAG 拆分为职责明确的节点，系统的执行过程可以被追踪，失败也可以定位到具体阶段，从而实现“运行时哪里失败修哪里，开发时哪里退化改哪里”。
 
+## Demo
+
+🎬 [观看 Agentic RAG Demo（Bilibili）](https://www.bilibili.com/video/BV138ht6LEuK/)
+
+**1 分 43 秒 Demo**：展示 Agentic RAG 工作流、Success / Failure 两条实际执行路径，以及 Retrieval Evaluation。
+
+Demo 主要包括：
+
+- Query Transformation → Retrieve → Rerank → Grade → Generate → Verify 完整工作流
+- 正常回答路径与 Sources / Retrieval Trace
+- Grade 失败后的 Rewrite Query 与 Retrieval Recovery
+- 知识不足时的 `No Answer` 机制
+- 16 个固定 Regression Cases 的 Retrieval Evaluation
+
 ## 系统架构
 
 项目整体分为四层：
@@ -378,15 +392,11 @@ uvicorn api:app --reload
 
 FastAPI 默认运行在：
 
-```text
 http://127.0.0.1:8000
-```
 
 API 文档可以通过：
 
-```text
 http://127.0.0.1:8000/docs
-```
 
 查看。
 
@@ -402,9 +412,7 @@ npm run dev
 
 Vite 开发服务器默认运行在：
 
-```text
 http://localhost:5173
-```
 
 打开浏览器即可使用完整的 Agentic RAG Demo。
 
